@@ -72,7 +72,6 @@ namespace DynamicLights
             this.shadowMapMaterial.MainColor = ColorRgba.White;
             this.shadowMapMaterial.MainTexture = this.occlusionMap;
             this.shadowMapMaterial.Technique = ContentProvider.RequestContent<DrawTechnique>(@"Data\DynamicLights\Shaders\Techniques\ShadowMapTech.DrawTechnique.res");
-            this.shadowMapMaterial.SetUniform("lightSize", this.lightSize);
 
             this.shadowMapDevice = new DrawDevice();
             shadowMapDevice.Perspective = PerspectiveMode.Flat;
@@ -83,7 +82,6 @@ namespace DynamicLights
 
 
             this.finalMaterial = new BatchInfo(ContentProvider.RequestContent<DrawTechnique>(@"Data\DynamicLights\Shaders\Techniques\FinalTech.DrawTechnique.res"), ColorRgba.White, this.shadowMap);
-            this.finalMaterial.SetUniform("lightSize", this.lightSize);
 
             //Setup camera
             this.camera = GameObj.GetComponent<Camera>();
@@ -106,6 +104,9 @@ namespace DynamicLights
             Transform transform = this.GameObj.GetComponent<Transform>();
             Vector2 pos2 = transform.Pos.Xy;
             transform.Pos = new Vector3(pos2, -100);
+
+            this.finalMaterial.SetUniform("lightSize", this.lightSize);
+            this.shadowMapMaterial.SetUniform("lightSize", this.lightSize);
 
 
             this.shadowMapDevice.PrepareForDrawcalls();
