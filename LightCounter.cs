@@ -1,4 +1,5 @@
 ﻿using Duality;
+using Duality.Components;
 using Duality.Components.Renderers;
 using Duality.Resources;
 using System;
@@ -13,11 +14,7 @@ namespace Util
     {
         public void OnUpdate()
         {
-            /*GameObject obj = new GameObject();
-            Scene.Current.FindGameObject("DynamicLight").CopyTo(obj);
-            Scene.Current.AddObject(obj);*/
-
-            this.GameObj.GetComponent<TextRenderer>().Text = new Duality.Drawing.FormattedText(DynamicLights.DynamicLight.lights.ToString());
+            this.GameObj.GetComponent<TextRenderer>().Text = new Duality.Drawing.FormattedText(Scene.Current.FindComponents<Camera>().Where(c => c.Active).Count().ToString());
         }
     }
 }

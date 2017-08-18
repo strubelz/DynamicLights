@@ -17,9 +17,6 @@ namespace DynamicLights
         protected override void InitPlugin()
         {
             base.InitPlugin();
-
-
-
         }
 
     }

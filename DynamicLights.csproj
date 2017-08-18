@@ -54,8 +54,6 @@
     <Compile Include="FPSRenderer.cs" />
     <Compile Include="KeyControler.cs" />
     <Compile Include="LightCounter.cs" />
-    <Compile Include="TestRenderer.cs" />
-    <Compile Include="YourCustomComponentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

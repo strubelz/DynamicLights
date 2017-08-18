@@ -16,8 +16,6 @@ namespace DynamicLights
     [RequiredComponent(typeof(Camera), typeof(Camera))]
     public class DynamicLight : Renderer, ICmpInitializable
     {
-        [DontSerialize]
-        public static int lights = 0;
 
         private int lightSize = 100;
         [DontSerialize]private Camera camera;
@@ -57,8 +55,6 @@ namespace DynamicLights
         {
             if (context != InitContext.Activate)
                 return;
-
-            lights++;
 
             //Setup occlusion map and render target
             this.occlusionMap = new ContentRef<Texture>(new Texture(this.lightSize, this.lightSize, TextureSizeMode.NonPowerOfTwo, TextureMagFilter.Linear, TextureMinFilter.Linear));
